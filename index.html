@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: slategrey;
+        }
+        
+        h1 {
+            color: black;
+            font-size: 60px;
+            text-align: center;
+            border-bottom: solid red 2px;
+        }
+        
+        table {
+            font-size: 60px;
+            font-weight: bold;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        td {
+            width: 60px;
+            background: pink;
+            text-align: center;
+        }
+        
+        #answerBox {
+            font-size: 60px;
+            font-weight: bold;
+            line-height: 60px;
+            font-family: sans-serif;
+            width: 160px;
+            margin-top: 40px;
+            text-align: center;
+            background-color: slategrey;
+        }
+        
+        .horizontal {
+            border-bottom: solid black 20px;
+        }
+        
+        #testBoxxx {
+            color: slategrey;
+        }
+        
+        #subButton {
+            background-color: slategrey;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ADDITION AND SUBTRACTION PRACTICE</h1>
+
+    <table id="table">
+        <tr>
+            <td></td>
+            <td id="firstNumber"></td>
+        </tr>
+        <tr>
+            <td id="sign"></td>
+            <td id="secondNumber"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="horizontal"></td>
+
+        </tr>
+        <tr>
+            <td>Answer:</td>
+            <td>
+                <form id="answer">
+                    <input id="answerBox" type="text"> </input><input id="subButton" type="submit"></input>
+
+                </form>
+            </td>
+            </td>
+        </tr>
+    </table>
+
+    <p id="testBoxxx"></p>
+
+    <script>
+        const firstNum = Math.floor(Math.random() * 100);
+        const secondNum = Math.floor(Math.random() * firstNum) + 1;
+        const signGenerator = Math.floor(Math.random() * 100);
+        const addSign = "+";
+        const subSign = "-";
+        const operand = document.getElementById("sign").innerHTML;
+        const checker1 = firstNum + secondNum;
+        const checker2 = firstNum - secondNum;
+
+
+        if (signGenerator > 51) {
+            document.getElementById("sign").innerHTML = "+";
+            let answerA = firstNum + secondNum;
+            document.getElementById("testBoxxx").innerHTML = answerA;
+            console.log(answerA);
+        } else {
+            document.getElementById("sign").innerHTML = "-";
+            let answerB = firstNum - secondNum;
+            document.getElementById("testBoxxx").innerHTML = answerB;
+            console.log(answerB);
+
+        }
+
+        if (firstNum < 10) {
+            document.getElementById("firstNumber").innerHTML = "0" + firstNum;
+        } else {
+            document.getElementById("firstNumber").innerHTML = firstNum;
+        }
+
+        if (secondNum < 10) {
+            document.getElementById("secondNumber").innerHTML = "0" + secondNum;
+        } else {
+            document.getElementById("secondNumber").innerHTML = secondNum;
+        }
+
+        document.getElementById("answer").addEventListener("submit", checkAnswer);
+
+        function checkAnswer() {
+            var inputValue = document.getElementById("answerBox").value;
+            console.log(inputValue);
+            var integerConvert = parseInt(inputValue, 10);
+            console.log(integerConvert);
+            if (integerConvert == checker1 || integerConvert == checker2) {
+                alert("YOU ARE CORRECT!!!");
+            } else {
+                alert("GOOD TRY, BUT TRY AGAIN");
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>
